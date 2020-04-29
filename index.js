@@ -7,7 +7,7 @@ module.exports = app => {
     const params = context.issue({ body: "Hello World!" });
     return context.github.issues.createComment(params);
   });
-  app.on("issue_comment.created", async context => {
+  app.on("issue_comment.created", async context => { //gfg
     commands(app, "lm", (context, command) => {
       const labelvals = command.arguments.split(/, */);
       // var labelipjson = JSON.stringify(labelvals);
@@ -15,7 +15,7 @@ module.exports = app => {
       context.log('label_len ' + label_len);
       var labels = labelvals.slice(1, label_len);
       
-      context.log(labels);
+      context.log(labels); //gfg
 
       if (labelvals[0] == "add") {
         // var labels = labelvals.slice(1, label_len);
@@ -29,7 +29,7 @@ module.exports = app => {
           context.issue({ name: labels[i] })
         );
       }
-      }else {
+      }else { //gfg
         var params = context.issue({
           body:
             "improper command. follow the syntax: /lm [add/remove] label1 label2 label3"
